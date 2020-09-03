@@ -25,7 +25,7 @@ namespace chatDS
             nuevo.idReceptor = 2;
             nuevo.fecha = DateTime.Now;
             nuevo.estadoMensaje = 2;
-            nuevo.contenidoMensaje = "Hola";
+            nuevo.contenidoMensaje = "Test Message";
             mcn.guardarMensaje(nuevo);
             return mcn.obtenerMensajes();
         }

@@ -76,10 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\Contacto.cs" />
+    <Compile Include="DAL\ContactoCapaNegocio.cs" />
     <Compile Include="DAL\GestorContexto.cs" />
     <Compile Include="DAL\Mensaje.cs" />
     <Compile Include="DAL\MensajesCapaNegocio.cs" />
     <Compile Include="DAL\Usuario.cs" />
+    <Compile Include="DAL\UsuarioCapaNegocio.cs" />
     <Compile Include="Migrations\202009021437441_CreacionBDD.cs" />
     <Compile Include="Migrations\202009021437441_CreacionBDD.designer.cs">
       <DependentUpon>202009021437441_CreacionBDD.cs</DependentUpon>
@@ -88,7 +90,7 @@
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="IChatService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,37 +9,81 @@ using System.Text;
 
 namespace chatDS
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código, en svc y en el archivo de configuración.
-    // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
-    public class Service1 : IService1
+    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "ChatService" en el código, en svc y en el archivo de configuración.
+    // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ChatService.svc o ChatService.svc.cs en el Explorador de soluciones e inicie la depuración.
+    public class ChatService : IChatService
     {
-        public string GetData(int value)
+        public int crearUsuario(string numCelular, string claveUsuario, string nombre)
         {
-            return string.Format("You entered: {0}", value);
+            UsuarioCapaNegocio ucc = new UsuarioCapaNegocio();
+            Usuario nuevoUsuario = new Usuario();
+            //nuevoUsuario.idUsuario = idUsuario;
+            nuevoUsuario.numCelular = numCelular;
+            nuevoUsuario.claveUsuario = claveUsuario;
+            nuevoUsuario.nombre = nombre;
+            ucc.crearUsuario(nuevoUsuario);
+            return 1;
         }
-        public List<Mensaje> GetMsg()
+
+        public List<Usuario> obtenerUsuarios()
+        {
+            UsuarioCapaNegocio ucc = new UsuarioCapaNegocio();
+            return ucc.obtenerUsuarios();
+        }
+
+        public Usuario iniciarSesion(string numCelular, string clave)
+        {
+            UsuarioCapaNegocio ucc = new UsuarioCapaNegocio();
+            List<Usuario> listaUsuarios = ucc.obtenerUsuarios();
+            foreach(Usuario iterU in listaUsuarios)
+            {
+                if(iterU.numCelular.Equals(numCelular) && iterU.claveUsuario.Equals(clave))
+                {
+                    return iterU;
+                }
+            }
+            return null;
+        }
+
+        public List<Contacto> obtenerContactos(int idUsuario)
+        {
+
+            return null;
+        }
+
+        public int agregarContacto(int idUsuarioEmisor, string numCelular)
+        {
+            return 0;
+        }
+
+        public bool comprobarMensajes(int idUsuario)
+        {
+            return false;
+        }
+
+        public List<Mensaje> obtenerMensajes(int idUsuario, int idEmisor)
+        {
+            return null;
+        }
+
+        public int marcarLeido(int idMensaje)
+        {
+            return 0;
+        }
+
+        public int enviarMensaje(int idEmisor, int idReceptor, string contenido)
         {
             MensajesCapaNegocio mcn = new MensajesCapaNegocio();
-            Mensaje nuevo = new Mensaje();
-            nuevo.idEmisor = 1;
-            nuevo.idReceptor = 2;
-            nuevo.fecha = DateTime.Now;
-            nuevo.estadoMensaje = 2;
-            nuevo.contenidoMensaje = "Test Message";
-            mcn.guardarMensaje(nuevo);
-            return mcn.obtenerMensajes();
+            Mensaje nuevoMensaje = new Mensaje();
+            nuevoMensaje.idEmisor = idEmisor;
+            nuevoMensaje.idReceptor = idReceptor;
+            nuevoMensaje.contenidoMensaje = contenido;
+            nuevoMensaje.fecha = DateTime.Now;
+            nuevoMensaje.estadoMensaje = 1;
+            mcn.guardarMensaje(nuevoMensaje);
+            return nuevoMensaje.estadoMensaje;
         }
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
+
+        
     }
 }

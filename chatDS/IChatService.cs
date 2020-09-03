@@ -44,7 +44,7 @@ namespace chatDS
         bool comprobarMensajes(int idUsuario);
 
         [OperationContract]
-        List<Mensaje> obtenerMensajes(int idUsuario,int idEmisor);
+        List<Mensaje> obtenerMensajesPorUsuario(int idUsuario,int idEmisor);
 
         [OperationContract]
         int enviarMensaje(int idEmisor, int idReceptor, string contenido);

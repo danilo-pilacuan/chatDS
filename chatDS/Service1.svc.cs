@@ -17,7 +17,6 @@ namespace chatDS
         {
             UsuarioCapaNegocio ucc = new UsuarioCapaNegocio();
             Usuario nuevoUsuario = new Usuario();
-            //nuevoUsuario.idUsuario = idUsuario;
             nuevoUsuario.numCelular = numCelular;
             nuevoUsuario.claveUsuario = claveUsuario;
             nuevoUsuario.nombre = nombre;
@@ -47,13 +46,30 @@ namespace chatDS
 
         public List<Contacto> obtenerContactos(int idUsuario)
         {
-
-            return null;
+            ContactoCapaNegocio ccn = new ContactoCapaNegocio();
+            return ccn.obtenerContactos();
         }
 
         public int agregarContacto(int idUsuarioEmisor, string numCelular)
         {
-            return 0;
+            ContactoCapaNegocio ccn = new ContactoCapaNegocio();
+            UsuarioCapaNegocio ucn = new UsuarioCapaNegocio();
+            Contacto nuevoContacto = new Contacto();
+            nuevoContacto.idUsuarioEmisor = idUsuarioEmisor;
+            int idUsuarioReceptor=0;
+            foreach (Usuario iterU in ucn.obtenerUsuarios())
+            {
+                if (iterU.numCelular.Equals(numCelular))
+                {
+                    idUsuarioReceptor = iterU.idUsuario;
+                    break;
+                }
+            }
+            if (idUsuarioReceptor == 0)
+                return 0;
+            nuevoContacto.idUsuarioReceptor= idUsuarioReceptor;
+            ccn.agregarContacto(nuevoContacto);
+            return 1;
         }
 
         public bool comprobarMensajes(int idUsuario)
@@ -61,9 +77,10 @@ namespace chatDS
             return false;
         }
 
-        public List<Mensaje> obtenerMensajes(int idUsuario, int idEmisor)
+        public List<Mensaje> obtenerMensajesPorUsuario(int idUsuario, int idEmisor)
         {
-            return null;
+            MensajesCapaNegocio mcn = new MensajesCapaNegocio();
+            return mcn.obtenerMensajesPorUsuario(idUsuario, idEmisor);
         }
 
         public int marcarLeido(int idMensaje)

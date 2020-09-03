@@ -13,6 +13,19 @@ namespace chatDS.DAL
         {
             return db.listaContactos.ToList();
         }
+
+        public List<Contacto> obtenerContactosPorIdUsuario(int idUsuario)
+        {
+            return db.listaContactos.ToList();
+        }
+
+        public int agregarContacto(Contacto nuevoContacto)
+        {
+            db.listaContactos.Add(nuevoContacto);
+            db.SaveChanges();
+            return 1;
+        }
+
         /*public string guardarMensaje(Mensaje nuevoMensaje)
         {
             db.listaMensajes.Add(nuevoMensaje);

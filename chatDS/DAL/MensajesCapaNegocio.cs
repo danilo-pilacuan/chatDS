@@ -19,5 +19,18 @@ namespace chatDS.DAL
             db.SaveChanges();
             return "Exito";
         }
+        public List<Mensaje> obtenerMensajesPorUsuario(int idUsuario,int idEmisor)
+        {
+            List<Mensaje> mensajes = new List<Mensaje>();
+            foreach(Mensaje iterM in db.listaMensajes.ToList())
+            {
+                if(iterM.idEmisor==idEmisor && iterM.idReceptor==idUsuario)
+                {
+                    mensajes.Add(iterM);
+                }
+            }
+
+            return mensajes;
+        }
     }
 }

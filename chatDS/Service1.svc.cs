@@ -9,6 +9,7 @@ using System.Text;
 
 namespace chatDS
 {
+    // NOTA: Revisar el respositorio
     // NOTA: Revisar interfaz grafica
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "ChatService" en el código, en svc y en el archivo de configuración.
     // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ChatService.svc o ChatService.svc.cs en el Explorador de soluciones e inicie la depuración.

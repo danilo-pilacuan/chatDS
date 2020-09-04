@@ -74,6 +74,7 @@ namespace chatDS
 
         public bool comprobarMensajes(int idUsuario)
         {
+            //TODO
             return false;
         }
 

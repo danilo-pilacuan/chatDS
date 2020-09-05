@@ -51,6 +51,7 @@ namespace chatDS
             ContactoCapaNegocio ccn = new ContactoCapaNegocio();
             return ccn.obtenerContactos();
         }
+        
 
         public int agregarContacto(int idUsuarioEmisor, string numCelular)
         {
@@ -110,6 +111,18 @@ namespace chatDS
             return nuevoMensaje.estadoMensaje;
         }
 
-        
+        public List<Usuario> obtenerContactosPorUsuario(int idUsuario)
+        {
+            ContactoCapaNegocio ccn = new ContactoCapaNegocio();
+            UsuarioCapaNegocio ucn = new UsuarioCapaNegocio();
+            List<Usuario> listaUC = new List<Usuario>();
+            foreach (Contacto iterC in ccn.obtenerContactosPorIdUsuario(idUsuario))
+            {
+                listaUC.Add(ucn.obtenerUsuarioPorId(iterC.idUsuarioReceptor));
+            }
+            return listaUC;
+        }
+
+
     }
 }

@@ -371,6 +371,12 @@ namespace ClienteChat.ServicioChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerTodosLosMensajes", ReplyAction="http://tempuri.org/IChatService/obtenerTodosLosMensajesResponse")]
         System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerTodosLosMensajesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerContactosPorUsuario", ReplyAction="http://tempuri.org/IChatService/obtenerContactosPorUsuarioResponse")]
+        ClienteChat.ServicioChat.Usuario[] obtenerContactosPorUsuario(int idUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerContactosPorUsuario", ReplyAction="http://tempuri.org/IChatService/obtenerContactosPorUsuarioResponse")]
+        System.Threading.Tasks.Task<ClienteChat.ServicioChat.Usuario[]> obtenerContactosPorUsuarioAsync(int idUsuario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -478,6 +484,14 @@ namespace ClienteChat.ServicioChat {
         
         public System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerTodosLosMensajesAsync() {
             return base.Channel.obtenerTodosLosMensajesAsync();
+        }
+        
+        public ClienteChat.ServicioChat.Usuario[] obtenerContactosPorUsuario(int idUsuario) {
+            return base.Channel.obtenerContactosPorUsuario(idUsuario);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteChat.ServicioChat.Usuario[]> obtenerContactosPorUsuarioAsync(int idUsuario) {
+            return base.Channel.obtenerContactosPorUsuarioAsync(idUsuario);
         }
     }
 }

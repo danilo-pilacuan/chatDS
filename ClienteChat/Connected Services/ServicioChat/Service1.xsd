@@ -144,4 +144,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="obtenerContactosPorUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idUsuario" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="obtenerContactosPorUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/chatDS.DAL" minOccurs="0" name="obtenerContactosPorUsuarioResult" nillable="true" type="q6:ArrayOfUsuario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

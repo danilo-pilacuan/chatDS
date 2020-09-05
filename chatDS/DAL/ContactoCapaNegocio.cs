@@ -16,7 +16,15 @@ namespace chatDS.DAL
 
         public List<Contacto> obtenerContactosPorIdUsuario(int idUsuario)
         {
-            return db.listaContactos.ToList();
+            List<Contacto> listaC = new List<Contacto>();
+            foreach(Contacto iterC in db.listaContactos.ToList())
+            {
+                if(iterC.idUsuarioEmisor==idUsuario)
+                {
+                    listaC.Add(iterC);
+                }
+            }
+            return listaC;
         }
 
         public int agregarContacto(Contacto nuevoContacto)

@@ -67,6 +67,12 @@
   <wsdl:message name="IChatService_obtenerTodosLosMensajes_OutputMessage">
     <wsdl:part name="parameters" element="tns:obtenerTodosLosMensajesResponse" />
   </wsdl:message>
+  <wsdl:message name="IChatService_obtenerContactosPorUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerContactosPorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_obtenerContactosPorUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerContactosPorUsuarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="IChatService">
     <wsdl:operation name="crearUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatService/crearUsuario" message="tns:IChatService_crearUsuario_InputMessage" />
@@ -107,6 +113,10 @@
     <wsdl:operation name="obtenerTodosLosMensajes">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatService/obtenerTodosLosMensajes" message="tns:IChatService_obtenerTodosLosMensajes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChatService/obtenerTodosLosMensajesResponse" message="tns:IChatService_obtenerTodosLosMensajes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerContactosPorUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/obtenerContactosPorUsuario" message="tns:IChatService_obtenerContactosPorUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/obtenerContactosPorUsuarioResponse" message="tns:IChatService_obtenerContactosPorUsuario_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IChatService" type="tns:IChatService">
@@ -194,6 +204,15 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerTodosLosMensajes">
       <soap:operation soapAction="http://tempuri.org/IChatService/obtenerTodosLosMensajes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerContactosPorUsuario">
+      <soap:operation soapAction="http://tempuri.org/IChatService/obtenerContactosPorUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

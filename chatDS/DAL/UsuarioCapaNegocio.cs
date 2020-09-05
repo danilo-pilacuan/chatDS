@@ -13,6 +13,15 @@ namespace chatDS.DAL
         {
             return db.listaUsuarios.ToList();
         }
+        public Usuario obtenerUsuarioPorId(int idBuscar)
+        {
+            foreach(Usuario iterU in db.listaUsuarios.ToList())
+            {
+                if (iterU.idUsuario == idBuscar)
+                    return iterU;
+            }
+            return null;
+        }
         public string crearUsuario(Usuario nuevoUsuario)
         {
             db.listaUsuarios.Add(nuevoUsuario);

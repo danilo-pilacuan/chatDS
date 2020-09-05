@@ -55,6 +55,9 @@ namespace chatDS
         [OperationContract]
         List<Mensaje> obtenerTodosLosMensajes();
 
+        [OperationContract]
+        List<Usuario> obtenerContactosPorUsuario(int idUsuario);
+
     }
 
 

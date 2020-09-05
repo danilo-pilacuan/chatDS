@@ -1,6 +1,6 @@
 ﻿namespace ClienteChat
 {
-    partial class Form1
+    partial class FrmInicio
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInicio));
             this.txtNumCelular = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.txtClave = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.btnIniciarSesion = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnRegistrarse = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // txtNumCelular
@@ -160,19 +161,28 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Contraseña";
             // 
-            // Form1
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(565, 58);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(192, 119);
+            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Text = "";
+            // 
+            // FrmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRegistrarse);
             this.Controls.Add(this.btnIniciarSesion);
             this.Controls.Add(this.txtClave);
             this.Controls.Add(this.txtNumCelular);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "FrmInicio";
+            this.Text = "Inicio Sesión";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -187,6 +197,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnRegistrarse;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

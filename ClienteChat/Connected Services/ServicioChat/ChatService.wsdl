@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ChatService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:50919/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50919/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50919/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/chatDS.DAL" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IChatService_crearUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:crearUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_crearUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:crearUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_obtenerUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_obtenerUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_iniciarSesion_InputMessage">
+    <wsdl:part name="parameters" element="tns:iniciarSesion" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_iniciarSesion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:iniciarSesionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_obtenerContactos_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerContactos" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_obtenerContactos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerContactosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_agregarContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:agregarContacto" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_agregarContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:agregarContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_comprobarMensajes_InputMessage">
+    <wsdl:part name="parameters" element="tns:comprobarMensajes" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_comprobarMensajes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:comprobarMensajesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_obtenerMensajesPorUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerMensajesPorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_obtenerMensajesPorUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerMensajesPorUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_enviarMensaje_InputMessage">
+    <wsdl:part name="parameters" element="tns:enviarMensaje" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_enviarMensaje_OutputMessage">
+    <wsdl:part name="parameters" element="tns:enviarMensajeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_marcarLeido_InputMessage">
+    <wsdl:part name="parameters" element="tns:marcarLeido" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_marcarLeido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:marcarLeidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_obtenerTodosLosMensajes_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerTodosLosMensajes" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_obtenerTodosLosMensajes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerTodosLosMensajesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IChatService">
+    <wsdl:operation name="crearUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/crearUsuario" message="tns:IChatService_crearUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/crearUsuarioResponse" message="tns:IChatService_crearUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/obtenerUsuarios" message="tns:IChatService_obtenerUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/obtenerUsuariosResponse" message="tns:IChatService_obtenerUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="iniciarSesion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/iniciarSesion" message="tns:IChatService_iniciarSesion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/iniciarSesionResponse" message="tns:IChatService_iniciarSesion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerContactos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/obtenerContactos" message="tns:IChatService_obtenerContactos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/obtenerContactosResponse" message="tns:IChatService_obtenerContactos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/agregarContacto" message="tns:IChatService_agregarContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/agregarContactoResponse" message="tns:IChatService_agregarContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="comprobarMensajes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/comprobarMensajes" message="tns:IChatService_comprobarMensajes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/comprobarMensajesResponse" message="tns:IChatService_comprobarMensajes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerMensajesPorUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/obtenerMensajesPorUsuario" message="tns:IChatService_obtenerMensajesPorUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/obtenerMensajesPorUsuarioResponse" message="tns:IChatService_obtenerMensajesPorUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="enviarMensaje">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/enviarMensaje" message="tns:IChatService_enviarMensaje_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/enviarMensajeResponse" message="tns:IChatService_enviarMensaje_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="marcarLeido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/marcarLeido" message="tns:IChatService_marcarLeido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/marcarLeidoResponse" message="tns:IChatService_marcarLeido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerTodosLosMensajes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/obtenerTodosLosMensajes" message="tns:IChatService_obtenerTodosLosMensajes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/obtenerTodosLosMensajesResponse" message="tns:IChatService_obtenerTodosLosMensajes_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IChatService" type="tns:IChatService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="crearUsuario">
+      <soap:operation soapAction="http://tempuri.org/IChatService/crearUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerUsuarios">
+      <soap:operation soapAction="http://tempuri.org/IChatService/obtenerUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iniciarSesion">
+      <soap:operation soapAction="http://tempuri.org/IChatService/iniciarSesion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerContactos">
+      <soap:operation soapAction="http://tempuri.org/IChatService/obtenerContactos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarContacto">
+      <soap:operation soapAction="http://tempuri.org/IChatService/agregarContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="comprobarMensajes">
+      <soap:operation soapAction="http://tempuri.org/IChatService/comprobarMensajes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerMensajesPorUsuario">
+      <soap:operation soapAction="http://tempuri.org/IChatService/obtenerMensajesPorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviarMensaje">
+      <soap:operation soapAction="http://tempuri.org/IChatService/enviarMensaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="marcarLeido">
+      <soap:operation soapAction="http://tempuri.org/IChatService/marcarLeido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerTodosLosMensajes">
+      <soap:operation soapAction="http://tempuri.org/IChatService/obtenerTodosLosMensajes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ChatService">
+    <wsdl:port name="BasicHttpBinding_IChatService" binding="tns:BasicHttpBinding_IChatService">
+      <soap:address location="http://localhost:50919/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

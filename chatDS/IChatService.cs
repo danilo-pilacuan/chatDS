@@ -52,6 +52,9 @@ namespace chatDS
         [OperationContract]
         int marcarLeido(int idMensaje);
 
+        [OperationContract]
+        List<Mensaje> obtenerTodosLosMensajes();
+
     }
 
 

@@ -91,6 +91,12 @@ namespace chatDS
             return 0;
         }
 
+        public List<Mensaje> obtenerTodosLosMensajes()
+        {
+            MensajesCapaNegocio mcn = new MensajesCapaNegocio();
+            return mcn.obtenerMensajes();
+        }
+
         public int enviarMensaje(int idEmisor, int idReceptor, string contenido)
         {
             MensajesCapaNegocio mcn = new MensajesCapaNegocio();

@@ -81,10 +81,10 @@ namespace chatDS
             return false;
         }
 
-        public List<Mensaje> obtenerMensajesPorUsuario(int idUsuario, int idEmisor)
+        public List<Mensaje> obtenerMensajesPorUsuario(int idEmisor, int idReceptor)
         {
             MensajesCapaNegocio mcn = new MensajesCapaNegocio();
-            return mcn.obtenerMensajesPorUsuario(idUsuario, idEmisor);
+            return mcn.obtenerMensajesPorUsuario(idEmisor, idReceptor);
         }
 
         public int marcarLeido(int idMensaje)
@@ -123,6 +123,30 @@ namespace chatDS
             return listaUC;
         }
 
+        public Usuario obtenerUsuarioPorNombre(string nombre)
+        {
+            UsuarioCapaNegocio ucn = new UsuarioCapaNegocio();
+            foreach(Usuario iterU in ucn.obtenerUsuarios())
+            {
+                if (iterU.nombre.Equals(nombre))
+                    return iterU;
+            }
+            return null;
+        }
+
+        public List<Mensaje> obtenerMensajesEntreUsuarios(int idUsuario1, int idUsuario2)
+        {
+            MensajesCapaNegocio mcn = new MensajesCapaNegocio();
+            List<Mensaje> listaMensajes = mcn.obtenerMensajes();
+            List<Mensaje> listaRec = new List<Mensaje>();
+            foreach(Mensaje iterM in listaMensajes)
+            {
+                if ((iterM.idEmisor == idUsuario1 && iterM.idReceptor==idUsuario2)|| iterM.idEmisor == idUsuario2 && iterM.idReceptor == idUsuario1)
+                    listaRec.Add(iterM);
+            }
+            List<Mensaje> mensajesOrd = listaRec.OrderBy(o => o.fecha).ToList();
+            return mensajesOrd;
+        }
 
     }
 }

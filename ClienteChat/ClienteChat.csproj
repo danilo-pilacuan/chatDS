@@ -56,6 +56,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="FormAddContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddContact.Designer.cs">
+      <DependentUpon>FormAddContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmChat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAddContact.resx">
+      <DependentUpon>FormAddContact.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmChat.resx">
       <DependentUpon>FrmChat.cs</DependentUpon>
     </EmbeddedResource>

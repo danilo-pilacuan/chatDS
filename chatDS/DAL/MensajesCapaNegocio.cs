@@ -19,18 +19,24 @@ namespace chatDS.DAL
             db.SaveChanges();
             return "Exito";
         }
-        public List<Mensaje> obtenerMensajesPorUsuario(int idUsuario,int idEmisor)
+        public List<Mensaje> obtenerMensajesPorUsuario(int idEmisor,int idReceptor)
         {
+            Console.WriteLine("Emisor:" + idEmisor);
+            Console.WriteLine("Receptor:" + idReceptor);
             List<Mensaje> mensajes = new List<Mensaje>();
             foreach(Mensaje iterM in db.listaMensajes.ToList())
             {
-                if(iterM.idEmisor==idEmisor && iterM.idReceptor==idUsuario)
-                {
+                //if((iterM.idEmisor==idEmisor && iterM.idReceptor== idReceptor) || (iterM.idEmisor== idReceptor && iterM.idReceptor== idEmisor))
+                //{
+                if (iterM.idEmisor == idEmisor && iterM.idReceptor==idReceptor)
                     mensajes.Add(iterM);
-                }
+                //}
             }
 
+            
+            List<Mensaje> mensajesOrd = mensajes.OrderBy(o => o.fecha).ToList();
             return mensajes;
+            //return db.listaMensajes.ToList();
         }
     }
 }

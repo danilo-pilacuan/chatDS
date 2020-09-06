@@ -35,7 +35,6 @@
             this.btnRegistrarse = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // txtNumCelular
@@ -53,6 +52,7 @@
             this.txtNumCelular.Name = "txtNumCelular";
             this.txtNumCelular.Size = new System.Drawing.Size(370, 44);
             this.txtNumCelular.TabIndex = 0;
+            this.txtNumCelular.Text = "0987171309";
             this.txtNumCelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // txtClave
@@ -70,6 +70,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(370, 44);
             this.txtClave.TabIndex = 0;
+            this.txtClave.Text = "danilo123";
             this.txtClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // btnIniciarSesion
@@ -161,20 +162,11 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Contraseña";
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(565, 58);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(192, 119);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
-            // 
             // FrmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRegistrarse);
@@ -197,7 +189,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnRegistrarse;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

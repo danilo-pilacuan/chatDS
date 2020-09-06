@@ -349,10 +349,10 @@ namespace ClienteChat.ServicioChat {
         System.Threading.Tasks.Task<bool> comprobarMensajesAsync(int idUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerMensajesPorUsuario", ReplyAction="http://tempuri.org/IChatService/obtenerMensajesPorUsuarioResponse")]
-        ClienteChat.ServicioChat.Mensaje[] obtenerMensajesPorUsuario(int idUsuario, int idEmisor);
+        ClienteChat.ServicioChat.Mensaje[] obtenerMensajesPorUsuario(int idEmisor, int idReceptor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerMensajesPorUsuario", ReplyAction="http://tempuri.org/IChatService/obtenerMensajesPorUsuarioResponse")]
-        System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerMensajesPorUsuarioAsync(int idUsuario, int idEmisor);
+        System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerMensajesPorUsuarioAsync(int idEmisor, int idReceptor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/enviarMensaje", ReplyAction="http://tempuri.org/IChatService/enviarMensajeResponse")]
         int enviarMensaje(int idEmisor, int idReceptor, string contenido);
@@ -377,6 +377,18 @@ namespace ClienteChat.ServicioChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerContactosPorUsuario", ReplyAction="http://tempuri.org/IChatService/obtenerContactosPorUsuarioResponse")]
         System.Threading.Tasks.Task<ClienteChat.ServicioChat.Usuario[]> obtenerContactosPorUsuarioAsync(int idUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerUsuarioPorNombre", ReplyAction="http://tempuri.org/IChatService/obtenerUsuarioPorNombreResponse")]
+        ClienteChat.ServicioChat.Usuario obtenerUsuarioPorNombre(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerUsuarioPorNombre", ReplyAction="http://tempuri.org/IChatService/obtenerUsuarioPorNombreResponse")]
+        System.Threading.Tasks.Task<ClienteChat.ServicioChat.Usuario> obtenerUsuarioPorNombreAsync(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerMensajesEntreUsuarios", ReplyAction="http://tempuri.org/IChatService/obtenerMensajesEntreUsuariosResponse")]
+        ClienteChat.ServicioChat.Mensaje[] obtenerMensajesEntreUsuarios(int idUsuario1, int idUsuario2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerMensajesEntreUsuarios", ReplyAction="http://tempuri.org/IChatService/obtenerMensajesEntreUsuariosResponse")]
+        System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerMensajesEntreUsuariosAsync(int idUsuario1, int idUsuario2);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -454,12 +466,12 @@ namespace ClienteChat.ServicioChat {
             return base.Channel.comprobarMensajesAsync(idUsuario);
         }
         
-        public ClienteChat.ServicioChat.Mensaje[] obtenerMensajesPorUsuario(int idUsuario, int idEmisor) {
-            return base.Channel.obtenerMensajesPorUsuario(idUsuario, idEmisor);
+        public ClienteChat.ServicioChat.Mensaje[] obtenerMensajesPorUsuario(int idEmisor, int idReceptor) {
+            return base.Channel.obtenerMensajesPorUsuario(idEmisor, idReceptor);
         }
         
-        public System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerMensajesPorUsuarioAsync(int idUsuario, int idEmisor) {
-            return base.Channel.obtenerMensajesPorUsuarioAsync(idUsuario, idEmisor);
+        public System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerMensajesPorUsuarioAsync(int idEmisor, int idReceptor) {
+            return base.Channel.obtenerMensajesPorUsuarioAsync(idEmisor, idReceptor);
         }
         
         public int enviarMensaje(int idEmisor, int idReceptor, string contenido) {
@@ -492,6 +504,22 @@ namespace ClienteChat.ServicioChat {
         
         public System.Threading.Tasks.Task<ClienteChat.ServicioChat.Usuario[]> obtenerContactosPorUsuarioAsync(int idUsuario) {
             return base.Channel.obtenerContactosPorUsuarioAsync(idUsuario);
+        }
+        
+        public ClienteChat.ServicioChat.Usuario obtenerUsuarioPorNombre(string nombre) {
+            return base.Channel.obtenerUsuarioPorNombre(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteChat.ServicioChat.Usuario> obtenerUsuarioPorNombreAsync(string nombre) {
+            return base.Channel.obtenerUsuarioPorNombreAsync(nombre);
+        }
+        
+        public ClienteChat.ServicioChat.Mensaje[] obtenerMensajesEntreUsuarios(int idUsuario1, int idUsuario2) {
+            return base.Channel.obtenerMensajesEntreUsuarios(idUsuario1, idUsuario2);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerMensajesEntreUsuariosAsync(int idUsuario1, int idUsuario2) {
+            return base.Channel.obtenerMensajesEntreUsuariosAsync(idUsuario1, idUsuario2);
         }
     }
 }

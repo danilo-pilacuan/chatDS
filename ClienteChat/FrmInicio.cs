@@ -51,5 +51,11 @@ namespace ClienteChat
                 MessageBox.Show("Not found");
             }
         }
+
+        private void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+            FrmRegistrarse frmRegistrarse = new FrmRegistrarse(cliente);
+            frmRegistrarse.Show();
+        }
     }
 }

@@ -389,6 +389,12 @@ namespace ClienteChat.ServicioChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerMensajesEntreUsuarios", ReplyAction="http://tempuri.org/IChatService/obtenerMensajesEntreUsuariosResponse")]
         System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerMensajesEntreUsuariosAsync(int idUsuario1, int idUsuario2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerNumeroDeMensajesNoLeidosPorEmisor", ReplyAction="http://tempuri.org/IChatService/obtenerNumeroDeMensajesNoLeidosPorEmisorResponse")]
+        int obtenerNumeroDeMensajesNoLeidosPorEmisor(int idUsuario1, int idUsuario2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/obtenerNumeroDeMensajesNoLeidosPorEmisor", ReplyAction="http://tempuri.org/IChatService/obtenerNumeroDeMensajesNoLeidosPorEmisorResponse")]
+        System.Threading.Tasks.Task<int> obtenerNumeroDeMensajesNoLeidosPorEmisorAsync(int idUsuario1, int idUsuario2);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -520,6 +526,14 @@ namespace ClienteChat.ServicioChat {
         
         public System.Threading.Tasks.Task<ClienteChat.ServicioChat.Mensaje[]> obtenerMensajesEntreUsuariosAsync(int idUsuario1, int idUsuario2) {
             return base.Channel.obtenerMensajesEntreUsuariosAsync(idUsuario1, idUsuario2);
+        }
+        
+        public int obtenerNumeroDeMensajesNoLeidosPorEmisor(int idUsuario1, int idUsuario2) {
+            return base.Channel.obtenerNumeroDeMensajesNoLeidosPorEmisor(idUsuario1, idUsuario2);
+        }
+        
+        public System.Threading.Tasks.Task<int> obtenerNumeroDeMensajesNoLeidosPorEmisorAsync(int idUsuario1, int idUsuario2) {
+            return base.Channel.obtenerNumeroDeMensajesNoLeidosPorEmisorAsync(idUsuario1, idUsuario2);
         }
     }
 }

@@ -38,5 +38,18 @@ namespace chatDS.DAL
             return mensajes;
             //return db.listaMensajes.ToList();
         }
+        public int marcarMsgLeido(int idMensaje)
+        {
+            foreach (Mensaje iterM in db.listaMensajes.ToList())
+            {
+                if (iterM.idMensaje == idMensaje)
+                {
+                    iterM.estadoMensaje = 2;
+                    db.SaveChanges();
+                    break;
+                }
+            }
+            return 1;
+        }
     }
 }

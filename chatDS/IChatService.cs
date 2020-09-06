@@ -64,10 +64,14 @@ namespace chatDS
         [OperationContract]
         List<Mensaje> obtenerMensajesEntreUsuarios(int idUsuario1,int idUsuario2);
 
+        [OperationContract]
+        int obtenerNumeroDeMensajesNoLeidosPorEmisor(int idUsuario1, int idUsuario2);
+
+        
 
 
     }
 
 
-   
+
 }

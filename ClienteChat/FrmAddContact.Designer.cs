@@ -1,6 +1,6 @@
 ﻿namespace ClienteChat
 {
-    partial class FormAddContact
+    partial class FrmAddContact
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddContact));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddContact));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumCelular = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label2 = new System.Windows.Forms.Label();

@@ -16,6 +16,7 @@ namespace ClienteChat
         ServicioChat.Usuario usuario;
         ServicioChat.Usuario receptor;
         List<ServicioChat.Usuario> listaUsuariosContactos;
+        List<UsuarioLst> listaULst;
         public FrmChat()
         {
             InitializeComponent();
@@ -31,26 +32,33 @@ namespace ClienteChat
         {
             listaUsuariosContactos = cliente.obtenerContactosPorUsuario(this.usuario.idUsuario).ToList();
             lstContactos.Items.Clear();
-            foreach(ServicioChat.Usuario iterUC in listaUsuariosContactos)
+            listaULst = new List<UsuarioLst>();
+            foreach (ServicioChat.Usuario iterUC in listaUsuariosContactos)
             {
-                lstContactos.Items.Add(iterUC.nombre);
+                UsuarioLst nuevoULst = new UsuarioLst();
+                nuevoULst.idUsuario = iterUC.idUsuario;
+                nuevoULst.nombre = iterUC.nombre;
+                nuevoULst.numCelular = iterUC.numCelular;
+                nuevoULst.claveUsuario = iterUC.claveUsuario;
+                nuevoULst.numMensajes = cliente.obtenerNumeroDeMensajesNoLeidosPorEmisor(iterUC.idUsuario, usuario.idUsuario);
+                lstContactos.Items.Add(nuevoULst);
             }
         }
 
         private void FrmChat_Load(object sender, EventArgs e)
         {
-
+            timer1.Enabled = true;
+            timer2.Enabled = true;
         }
 
         private void lstContactos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(lstContactos.SelectedIndex>=0)
             {
-                ServicioChat.Usuario auxU = cliente.obtenerUsuarioPorNombre((string)lstContactos.SelectedItem);
-                //MessageBox.Show(auxU.numCelular);
+                ServicioChat.Usuario auxU = cliente.obtenerUsuarioPorNombre(((UsuarioLst)lstContactos.SelectedItem).nombre);
                 receptor = auxU;
                 llenarLstMensajes(auxU.idUsuario);
-                
+                llenarLstContactos();
             }
         }
 
@@ -67,13 +75,18 @@ namespace ClienteChat
                 Console.WriteLine(iterM.idMensaje+" "+iterM.contenidoMensaje+" "+iterM.fecha.ToString()+" E:"+iterM.idEmisor+" R:"+iterM.idReceptor);
                 if(iterM.idEmisor==usuario.idUsuario)
                 {
-                    lstMensajes.Items.Add("[" + usuario.nombre + "] " + iterM.contenidoMensaje);
+                    if(iterM.estadoMensaje==1)
+                        lstMensajes.Items.Add("[" + usuario.nombre + "] " + iterM.contenidoMensaje + ">>Tx");
+                    else
+                        lstMensajes.Items.Add("[" + usuario.nombre + "] " + iterM.contenidoMensaje + ">>✔");
                 }
                 else
                 {
                     lstMensajes.Items.Add("[" + receptor.nombre + "] " + iterM.contenidoMensaje);
+                    cliente.marcarLeido(iterM.idMensaje);
                 }
             }
+            lstMensajes.TopIndex = lstMensajes.Items.Count - 1;
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
@@ -83,6 +96,7 @@ namespace ClienteChat
                 string mensaje = txtMensaje.Text;
                 txtMensaje.Text = "";
                 cliente.enviarMensaje(usuario.idUsuario, receptor.idUsuario, mensaje);
+                llenarLstMensajes(receptor.idUsuario);
             }
 
         }
@@ -90,6 +104,66 @@ namespace ClienteChat
         private void lstMensajes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddContact_Click(object sender, EventArgs e)
+        {
+            FrmAddContact frmAddContact = new FrmAddContact(cliente,usuario);
+            frmAddContact.ShowDialog();
+            llenarLstContactos();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+            if(cliente.comprobarMensajes(usuario.idUsuario))
+            {
+                llenarLstContactos();
+                if (receptor != null)
+                {
+                    if (cliente.obtenerNumeroDeMensajesNoLeidosPorEmisor(receptor.idUsuario, usuario.idUsuario) != 0)
+                    {
+                        llenarLstMensajes(receptor.idUsuario);
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        ServicioChat.Usuario auxU = cliente.obtenerUsuarioPorNombre(((UsuarioLst)lstContactos.Items[0]).nombre);
+                        receptor = auxU;
+                        llenarLstMensajes(auxU.idUsuario);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                }
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            
+            if (receptor != null)
+            {
+                llenarLstMensajes(receptor.idUsuario);
+                Console.WriteLine("bbb");
+            }
+            else
+            {
+                try
+                {
+                    ServicioChat.Usuario auxU = cliente.obtenerUsuarioPorNombre(((UsuarioLst)lstContactos.Items[0]).nombre);
+                    receptor = auxU;
+                    Console.WriteLine("aaa");
+                    llenarLstMensajes(auxU.idUsuario);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
     }
 }

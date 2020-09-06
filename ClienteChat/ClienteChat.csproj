@@ -56,11 +56,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="FormAddContact.cs">
+    <Compile Include="FrmAddContact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddContact.Designer.cs">
-      <DependentUpon>FormAddContact.cs</DependentUpon>
+    <Compile Include="FrmAddContact.Designer.cs">
+      <DependentUpon>FrmAddContact.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmChat.cs">
       <SubType>Form</SubType>
@@ -74,16 +74,26 @@
     <Compile Include="FrmInicio.Designer.cs">
       <DependentUpon>FrmInicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRegistrarse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRegistrarse.Designer.cs">
+      <DependentUpon>FrmRegistrarse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAddContact.resx">
-      <DependentUpon>FormAddContact.cs</DependentUpon>
+    <Compile Include="UsuarioLst.cs" />
+    <EmbeddedResource Include="FrmAddContact.resx">
+      <DependentUpon>FrmAddContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChat.resx">
       <DependentUpon>FrmChat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegistrarse.resx">
+      <DependentUpon>FrmRegistrarse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

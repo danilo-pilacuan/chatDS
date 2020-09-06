@@ -78,7 +78,43 @@ namespace chatDS
         public bool comprobarMensajes(int idUsuario)
         {
             //TODO
+            MensajesCapaNegocio mcn = new MensajesCapaNegocio();
+            List<Mensaje> listaMUsuario = new List<Mensaje>();
+            foreach(Mensaje iterM in mcn.obtenerMensajes())
+            {
+                if(iterM.idReceptor==idUsuario)
+                {
+                    listaMUsuario.Add(iterM);
+                }
+            }
+            foreach (Mensaje iterM in mcn.obtenerMensajes())
+            {
+                if(iterM.estadoMensaje==1)
+                {
+                    return true;
+                }
+            }
             return false;
+        }
+
+        public int obtenerNumeroDeMensajesNoLeidosPorEmisor(int idUsuario1, int idUsuario2)
+        {
+            int contMensajes = 0;
+            MensajesCapaNegocio mcn = new MensajesCapaNegocio();
+            List<Mensaje> listaMensajes = mcn.obtenerMensajes();
+            List<Mensaje> listaRec = new List<Mensaje>();
+            foreach (Mensaje iterM in listaMensajes)
+            {
+                if (iterM.idEmisor == idUsuario1 && iterM.idReceptor == idUsuario2)
+                    listaRec.Add(iterM);
+            }
+
+            foreach (Mensaje iterM in listaRec)
+            {
+                if (iterM.estadoMensaje == 1)
+                    contMensajes++;
+            }
+            return contMensajes;
         }
 
         public List<Mensaje> obtenerMensajesPorUsuario(int idEmisor, int idReceptor)
@@ -89,7 +125,9 @@ namespace chatDS
 
         public int marcarLeido(int idMensaje)
         {
-            return 0;
+            MensajesCapaNegocio mcn = new MensajesCapaNegocio();
+            
+            return mcn.marcarMsgLeido(idMensaje);
         }
 
         public List<Mensaje> obtenerTodosLosMensajes()

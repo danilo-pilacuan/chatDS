@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace ClienteChat
 {
-    public partial class FormAddContact : Form
+    public partial class FrmAddContact : Form
     {
         ServicioChat.ChatServiceClient cliente;
         ServicioChat.Usuario usuario;
-        ServicioChat.Usuario receptor;
+        
         List<ServicioChat.Usuario> listaUsuarios;
-        public FormAddContact()
+        public FrmAddContact()
         {
             InitializeComponent();
         } 
-        public FormAddContact(ServicioChat.ChatServiceClient cliente, ServicioChat.Usuario usuario)
+        public FrmAddContact(ServicioChat.ChatServiceClient cliente, ServicioChat.Usuario usuario)
         {
             this.cliente = cliente;
             this.usuario = usuario;

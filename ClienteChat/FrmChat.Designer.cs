@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChat));
             this.lstContactos = new System.Windows.Forms.ListBox();
             this.lstMensajes = new System.Windows.Forms.ListBox();
             this.txtMensaje = new System.Windows.Forms.TextBox();
             this.btnEnviar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnAddContact = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lstContactos
@@ -50,6 +53,7 @@
             this.lstMensajes.FormattingEnabled = true;
             this.lstMensajes.Location = new System.Drawing.Point(190, 28);
             this.lstMensajes.Name = "lstMensajes";
+            this.lstMensajes.ScrollAlwaysVisible = true;
             this.lstMensajes.Size = new System.Drawing.Size(598, 238);
             this.lstMensajes.TabIndex = 1;
             this.lstMensajes.SelectedIndexChanged += new System.EventHandler(this.lstMensajes_SelectedIndexChanged);
@@ -130,6 +134,17 @@
             this.btnAddContact.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddContact.Textcolor = System.Drawing.Color.White;
             this.btnAddContact.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddContact.Click += new System.EventHandler(this.btnAddContact_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 10000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // FrmChat
             // 
@@ -156,5 +171,7 @@
         private System.Windows.Forms.TextBox txtMensaje;
         private Bunifu.Framework.UI.BunifuFlatButton btnEnviar;
         private Bunifu.Framework.UI.BunifuFlatButton btnAddContact;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
